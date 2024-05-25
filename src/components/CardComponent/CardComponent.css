@@ -1,0 +1,48 @@
+.card {
+  width: 18rem;
+  height: 700px;
+  margin: 10px;
+  background-color: rgba(0, 0, 0, 0.348);
+  color: white;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: orange;
+
+  .contador {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    li {
+      list-style: none;
+      align-items: center;
+
+      p{
+        font-size: larger;
+        text-align:justify;
+      }
+    }
+  }
+  .add {
+    display: flex;
+    justify-items: center;
+  }
+  img {
+    height: 18rem;
+    border-radius: 20px;
+  }
+  .botones {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  h3 {
+    color: orange;
+    text-align: center;
+  }
+  h5{
+    padding: 10px;
+  }
+}

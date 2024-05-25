@@ -1,0 +1,23 @@
+.container {
+  background-color: rgba(0, 0, 0, 0.219);
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: orange;
+}
+.titulo {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: underline;
+  font-family: "Arial", sans-serif;
+  transition: transform 0.3s ease; /* Efecto de transición suave */
+}
+
+.titulo:hover {
+  font-style: italic; /* Cambia a cursiva al pasar el cursor sobre el título */
+  transform: translateY(-5px); /* Desplazamiento hacia arriba */
+}

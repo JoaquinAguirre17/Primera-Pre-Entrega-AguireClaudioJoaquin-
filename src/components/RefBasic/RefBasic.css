@@ -1,0 +1,13 @@
+h3{
+    text-align: center;
+    color: orange;
+}
+section{
+  display: flex;
+  justify-content: center;
+  
+}
+p{
+    margin: 20px;
+    color: white;
+}

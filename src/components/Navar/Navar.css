@@ -1,0 +1,27 @@
+.navbar {
+ background-color: #F96900;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-toggler {
+  background-color: gray;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  background-color: black;
+  border-radius: 360px;
+
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+
+  p {
+    color: black;
+    text-align: center;
+    font-size: xx-large;
+  }
+}
