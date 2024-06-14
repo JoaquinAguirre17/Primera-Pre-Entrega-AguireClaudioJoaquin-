@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import './BotonComponente.css'
 
-function BotonComponente({ ruta, nombre }) {
+function BotonComponente({ ruta, nombre,contador }) {
     return (
         <>
 
             <Link to={ruta}>
                 <button className="btn btn-secondary">
                     {nombre}
+                    {contador}
                 </button>
             </Link>
         </>

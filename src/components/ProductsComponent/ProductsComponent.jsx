@@ -1,27 +1,36 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import CardComponent from "../CardComponent/CardComponent.jsx";
-import './ProductosComponent.css';
+import './ProductsComponent.css'
+
+import { filterProdsByCategoria, getProducts } from "../../firebase/firebase";
 
 function ProductosComponent() {
     const { categoriaId } = useParams();
     const [products, setProducts] = useState([]);
     const [categoria, setCategoria] = useState([]);
 
-    const filterProductsByCategory = (products, category) => {
+    const filterProdsByCategoria = (products, category) => {
         return products.filter(product => product.categoria === category);
     };
 
     useEffect(() => {
-        getProducts.then(data => {
-            setProducts(data);
-            if (categoriaId) {
-                setCategoria(filterProductsByCategory(data, categoriaId));
-            } else {
-                setCategoria(data);
+        const fetchProducts = async () => {
+            try {
+                const data = await getProducts(); // Llama a getProducts como una función asincrónica
+                setProducts(data);
+                if (categoriaId) {
+                    const filteredProducts = filterProdsByCategoria(data, categoriaId);
+                    setCategoria(filteredProducts);
+                } else {
+                    setCategoria(data);
+                }
+            } catch (error) {
+                console.error('Error fetching products:', error);
             }
-        });
+        };
+
+        fetchProducts();
     }, [categoriaId]);
 
     return (

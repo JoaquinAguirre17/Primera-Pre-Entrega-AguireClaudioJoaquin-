@@ -4,6 +4,7 @@ import BotonComponente from '../Boton/BotonComponente'
 import { Link } from 'react-router-dom'
 import React from 'react'
 function Navar() {
+    
 
     return (
         <>
@@ -31,7 +32,7 @@ function Navar() {
                                 <BotonComponente ruta={'/categoria/stanley'} nombre={'Stanley'} />
                             </li>
                             <li className="nav-item">
-                                <CardWidgetComponente />
+                               <CardWidgetComponente/>
                             </li>
                         </ul>
                     </div>
