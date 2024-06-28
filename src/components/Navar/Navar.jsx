@@ -1,19 +1,22 @@
-import './Navar.css'
-import CardWidgetComponente from '../CardWidget/CardWidgetComponente'
-import BotonComponente from '../Boton/BotonComponente'
-import { Link } from 'react-router-dom'
-import React from 'react'
+import './Navar.css';
+import CardWidgetComponente from '../CardWidget/CardWidgetComponente';
+import BotonComponente from '../Boton/BotonComponente';
+import { Link } from 'react-router-dom';
+import React from 'react';
+import { useCart } from '../../Contex/CartContex';
+
 function Navar() {
-    
+    const { getTotalItems } = useCart();
+  
 
     return (
         <>
             <nav className="navbar navbar-expand-lg ">
                 <div className="container-fluid ">
-                    <a className="navbar-brand  " href="/">
-                        <img src="../../../public/img/fondo1.png" alt="CoderHouse" className='logo' ></img>
+                    <Link className="navbar-brand" to="/">
+                        <img src="/img/fondo1.png" alt="CoderHouse" className='logo' />
                         <p>Techno Shop</p>
-                    </a>
+                    </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -32,14 +35,14 @@ function Navar() {
                                 <BotonComponente ruta={'/categoria/stanley'} nombre={'Stanley'} />
                             </li>
                             <li className="nav-item">
-                               <CardWidgetComponente/>
+                                <CardWidgetComponente />
                             </li>
                         </ul>
                     </div>
-
                 </div>
             </nav>
         </>
-    )
+    );
 }
-export default Navar
+
+export default Navar;

@@ -1,6 +1,6 @@
 /// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { doc,getDoc, getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import { doc,getDoc, getFirestore, collection, getDocs, query, where, addDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -52,4 +52,11 @@ export async function getProductView(id) {
     return [];
   }
 }
+
+ //Orden de pedido
+ export const addOrder = async (order) => {
+  const orderCollection = collection(db, 'orders');
+  const docRef = await addDoc(orderCollection, order);
+  return docRef.id;
+};
 

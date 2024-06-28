@@ -1,37 +1,29 @@
-import './App.css'
-import Navar from './components/Navar/Navar'
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import ProducView from './components/ProductView/ProductView'
-import { CartProvider } from './Contex/CartContex'
-import CartComponent from './components/CartComponent/CartComponent'
-import ProductsComponent from './components/ProductsComponent/ProductsComponent'
-
+import './App.css';
+import Navar from './components/Navar/Navar';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from './Contex/CartContex';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetail from './components/ItemDetail/ItemDetail';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 function App() {
-
-
   return (
-    <>
-      <CartProvider>
-        <BrowserRouter>
-          <Navar />
-          <div className='container'>
-            <div className='titulo'>
-              <h1>Bienvenidos a Techno Shop</h1>
-            </div>
-            <Routes>
-              <Route exact path='/' element={<ProductsComponent />}></Route>
-              <Route exact path='/carrito' element={<CartComponent/>}></Route>
-              <Route exact path='/detalle/:prodId' element={<ProducView />}></Route>
-              <Route exact path='/categoria/:categoriaId' element={<ProductsComponent/>}></Route>
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </CartProvider>
-
-
-    </>
-  )
+    <CartProvider>
+      <BrowserRouter>
+        <Navar />
+        <div className='container'>
+          <Routes>
+            <Route exact path='/' element={<ItemListContainer />} />
+            <Route exact path='/carrito' element={<ItemDetailContainer />} />
+            <Route exact path='/detalle/:prodId' element={<ItemDetail />} />
+            <Route exact path='/categoria/:categoriaId' element={<ItemListContainer />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </CartProvider>
+  );
 }
 
-export default App
+export default App;
+
+

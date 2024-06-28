@@ -8,11 +8,11 @@
 
 .productview {
   width: 300px; /* Ancho de la tarjeta */
-  border: 1px solid #ddd; /* Borde de la tarjeta */
+  border: 1px solid orange; /* Borde de la tarjeta */
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
   overflow: hidden; /* Para manejar desbordamientos */
-  background-color: #fff; /* Color de fondo */
+  background-color: #0e0e0e6c; /* Color de fondo */
 }
 
 .productview img {

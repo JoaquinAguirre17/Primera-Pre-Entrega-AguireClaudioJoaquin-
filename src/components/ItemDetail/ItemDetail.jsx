@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from '../../Contex/CartContex';
-import './ProductView.css';
+import './ItemDetail.css'
 import BotonComponente from "../Boton/BotonComponente";
 import { getProductView } from "../../firebase/firebase";
 
-function ProductView() {
+function ItemDetail() {
     const { prodId } = useParams();
     const { addItem } = useCart();
     const [count, setCount] = useState(1);
     const [decrement, setDecrement] = useState(true);
     const [increment, setIncrement] = useState(false);
     const [showCompletePurchase, setShowCompletePurchase] = useState(false);
-    const [product, setProduct] = useState(null); 
-    const [loading, setLoading] = useState(true); 
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -24,7 +24,7 @@ function ProductView() {
                 }
                 setLoading(false);
             } catch (error) {
-                console.error('Error al obtener los detalles del producto:', error);
+                console.error('Error fetching product:', error);
                 setLoading(false);
             }
         };
@@ -51,17 +51,18 @@ function ProductView() {
         }
     };
 
+    //mando los valores al context
     const handleAddToCart = () => {
         addItem(product, count);
         setShowCompletePurchase(true);
     };
 
     if (loading) {
-        return <div>Loading...</div>; 
+        return <div>Loading...</div>;
     }
 
     if (!product) {
-        return <div>Producto no encontrado</div>; 
+        return <div>Product not found</div>;
     }
 
     return (
@@ -71,7 +72,7 @@ function ProductView() {
                 <div className="card-body">
                     <h5 className="card-title">{product.titulo}</h5>
                     <p className="card-text">{product.descripcion}</p>
-                    <p className="card-text">Precio: ${product.precio}</p>
+                    <p className="card-text">Price: ${product.precio}</p>
                     <p className="card-text">Stock: {product.stock}</p>
                     <ul className='contador-producto'>
                         <li>
@@ -87,9 +88,10 @@ function ProductView() {
                     <ul className='botones-producto'>
                         <li>
                             {showCompletePurchase ? (
-                                <BotonComponente nombre={'Terminar mi compra'} />
+                                <BotonComponente nombre={'Finalizar compra'} />
                             ) : (
-                                <BotonComponente onClick={handleAddToCart} nombre={'Añadir al Carrito'} />
+                               
+                                <button onClick={handleAddToCart}>Añadir al carrito</button>
                             )}
                         </li>
                     </ul>
@@ -99,6 +101,7 @@ function ProductView() {
     );
 }
 
-export default ProductView;
+export default ItemDetail;
+
 
 

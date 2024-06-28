@@ -1,0 +1,93 @@
+/* Estilos generales para la tarjeta */
+.productoscarrito{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.titulocarrito{
+    font-size: 64px;
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+    padding: 20px;
+}
+/* Estilos generales para la tarjeta */
+.carrito-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+    overflow: hidden;
+    background-color: #02020269;
+    color: white;
+    width: 45%;
+    margin: 5px;
+}
+
+.carrito-row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.carrito-img-fluid {
+    width: 200px;
+    height: auto;
+}
+
+.carrito-rounded-start {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+/* Contenedor del cuerpo de la tarjeta */
+.carrito-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Título de la tarjeta */
+.carrito-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: orange;
+    text-align: center;
+}
+
+/* Texto de la tarjeta */
+.carrito-card-text {
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* Ajuste de los márgenes de los párrafos */
+.carrito-card-text:last-child {
+    margin-bottom: 0;
+}
+.eleminaritem{
+    padding: 20px;
+    margin: 20px;
+}
+.totalcarrito{
+    text-align: center;
+    color: orange;
+   padding: 20px;
+   font-size: 54px;
+
+  
+}
+/* Responsivo */
+@media (max-width: 768px) {
+    .carrito-row {
+        flex-direction: column;
+    }
+
+    .carrito-img-fluid {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 0;
+    }
+}

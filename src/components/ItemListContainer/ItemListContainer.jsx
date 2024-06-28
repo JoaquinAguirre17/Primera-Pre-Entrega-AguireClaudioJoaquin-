@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CardComponent from "../CardComponent/CardComponent.jsx";
-import './ProductsComponent.css'
+import './ItemListContainer.css'
 
-import { filterProdsByCategoria, getProducts } from "../../firebase/firebase";
+import { getProducts } from "../../firebase/firebase.js";
 
-function ProductosComponent() {
+function ItemListContainer() {
     const { categoriaId } = useParams();
     const [products, setProducts] = useState([]);
     const [categoria, setCategoria] = useState([]);
@@ -17,7 +17,7 @@ function ProductosComponent() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const data = await getProducts(); // Llama a getProducts como una función asincrónica
+                const data = await getProducts();
                 setProducts(data);
                 if (categoriaId) {
                     const filteredProducts = filterProdsByCategoria(data, categoriaId);
@@ -34,19 +34,23 @@ function ProductosComponent() {
     }, [categoriaId]);
 
     return (
-        <div className="productos">
-            {categoria.map((product) => (
-                <CardComponent
-                    key={product.id}
-                    titulo={product.titulo}
-                    precio={product.precio}
-                    stock={product.stock}
-                    imagen={product.imagen}
-                    idProd={product.id}
-                />
-            ))}
-        </div>
-    );
+        <>
+            <div className='titulo'>
+                <h1>Bienvenidos a Techno Shop</h1>
+            </div>
+            <div className="productos">
+                {categoria.map((product) => (
+                    <CardComponent
+                        key={product.id}
+                        titulo={product.titulo}
+                        precio={product.precio}
+                        stock={product.stock}
+                        imagen={product.imagen}
+                        idProd={product.id}
+                    />
+                ))}
+            </div>
+        </>);
 }
 
-export default ProductosComponent;
+export default ItemListContainer;
