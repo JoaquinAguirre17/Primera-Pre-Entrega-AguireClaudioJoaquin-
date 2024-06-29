@@ -5,7 +5,7 @@ import './ItemDetailContainer.css';
 
 
 function ItemDetailContainer() {
-    const { cart, getTotalPrice, removeItem } = useCart();
+    const { cart, getTotalPrice, removeItem ,clearCart } = useCart();
     const [orderId, setOrderId] = useState(null);
 
     const handleAddOrder = () => {
@@ -19,6 +19,7 @@ function ItemDetailContainer() {
             const myModal = new window.bootstrap.Modal(document.getElementById('orderModal'));
             myModal.show();
         });
+        clearCart()
     };
 
     const handleDeleteFromCart = (itemId) => {
