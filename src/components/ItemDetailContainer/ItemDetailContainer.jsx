@@ -15,7 +15,6 @@ function ItemDetailContainer() {
         };
         addOrder(order).then(id => {
             setOrderId(id);
-            // Mostrar el modal después de establecer el ID de la orden
             const myModal = new window.bootstrap.Modal(document.getElementById('orderModal'));
             myModal.show();
         });

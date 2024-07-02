@@ -27,6 +27,7 @@ export const CartProvider = ({ children }) => {
         });
     };
 
+    
 
     //Funcion para eliminar un producto del carrito
     const removeItem = (itemId) => {

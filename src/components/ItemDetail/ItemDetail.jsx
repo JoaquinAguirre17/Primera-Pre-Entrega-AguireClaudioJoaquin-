@@ -4,6 +4,7 @@ import { useCart } from '../../Contex/CartContex';
 import './ItemDetail.css'
 import BotonComponente from "../Boton/BotonComponente";
 import { getProductView } from "../../firebase/firebase";
+import ReactLoading from 'react-loading';
 
 function ItemDetail() {
     const { prodId } = useParams();
@@ -13,7 +14,7 @@ function ItemDetail() {
     const [increment, setIncrement] = useState(false);
     const [showCompletePurchase, setShowCompletePurchase] = useState(false);
     const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -56,49 +57,58 @@ function ItemDetail() {
         addItem(product, count);
         setShowCompletePurchase(true);
     };
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false)
+        }, 2000)
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+        return () => clearTimeout(timer)
+    }, [])
 
-    if (!product) {
-        return <div>Product not found</div>;
-    }
 
     return (
-        <div className="producto">
-            <div className="productview card">
-                <img src={product.imagen} alt={product.titulo} />
-                <div className="card-body">
-                    <h5 className="card-title">{product.titulo}</h5>
-                    <p className="card-text">{product.descripcion}</p>
-                    <p className="card-text">Price: ${product.precio}</p>
-                    <p className="card-text">Stock: {product.stock}</p>
-                    <ul className='contador-producto'>
-                        <li>
-                            <button onClick={handleDec} disabled={decrement}>➖</button>
-                        </li>
-                        <li>
-                            <p> {count} </p>
-                        </li>
-                        <li>
-                            <button onClick={handleInc} disabled={increment}>➕</button>
-                        </li>
-                    </ul>
-                    <ul className='botones-producto'>
-                        <li>
-                            {showCompletePurchase ? (
-                                <BotonComponente nombre={'Finalizar compra'} />
-                            ) : (
-                               
-                                <button onClick={handleAddToCart}>Añadir al carrito</button>
-                            )}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    );
+        <>
+          
+                {isLoading ?
+                    (<div className="loading-container" >
+                        <ReactLoading type="spin" color="orange" height={200} width={200} />
+                    </div>)
+                    : (
+                        <div className="producto">
+                            <div className="productview card">
+                                <img src={product.imagen} alt={product.titulo} />
+                                <div className="card-body">
+                                    <h5 className="card-title">{product.titulo}</h5>
+                                    <p className="card-text">{product.descripcion}</p>
+                                    <p className="card-text">Price: ${product.precio}</p>
+                                    <p className="card-text">Stock: {product.stock}</p>
+                                    <ul className='contador-producto'>
+                                        <li>
+                                            <button onClick={handleDec} disabled={decrement}>➖</button>
+                                        </li>
+                                        <li>
+                                            <p> {count} </p>
+                                        </li>
+                                        <li>
+                                            <button onClick={handleInc} disabled={increment}>➕</button>
+                                        </li>
+                                    </ul>
+                                    <ul className='botones-producto'>
+                                        <li>
+                                            {showCompletePurchase ? (
+                                                <BotonComponente nombre={'Finalizar compra'} />
+                                            ) : (
+
+                                                <button onClick={handleAddToCart}>Añadir al carrito</button>
+                                            )}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
+    </>);
 }
 
 export default ItemDetail;
